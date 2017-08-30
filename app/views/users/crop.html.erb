@@ -1,0 +1,15 @@
+<%= image_tag @user.avatar_url(:large), id: "cropbox" %>
+
+<%= simple_form_for(@user) do |f| %>
+	<%= %w[x y w h].each do |attribute| %>
+		<%= f.input "crop_#{attribute}", as: :hidden %>
+	<% end %>
+
+	<div class="form-actions">
+		<%= f.button :submit %>
+	</div>
+<% end %>
+
+<div style="width: 100px; height: 100px; overflow: hidden;">
+	<%= image_tag @user.avatar_url(:large), id: "preview" %>
+</div>
